@@ -1,0 +1,20 @@
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IntellijIdea files
+.idea
+.classpath
+.project
+.settings
+target/
+.springBeans
+
+# Log file
+*.log
+
+*.iml
