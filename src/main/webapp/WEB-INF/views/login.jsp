@@ -15,6 +15,16 @@
     <title>Insert title here</title>
 </head>
 <body>
+ПРивет
+<table>
+    <c:forEach items="${userList}" var="user">
+        <tr>
+            <td>${user.userName}</td>
+            <td>${user.password}</td>
+        </tr>
+    </c:forEach>
+</table>
+
 <form:form method="POST"
            modelAttribute="userLogin"
            action="check-user"

@@ -43,9 +43,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
-
         <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
         <dependency>
             <groupId>javax.servlet</groupId>

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class User {
 
 //    public static int id = 0;
-    private int id;
+    private Long id;
     private String userName;
     private String telNumber;
     private String password;
@@ -17,10 +17,9 @@ public class User {
     private boolean active;
 
     public User(){
-//        ++id;
     }
 
-    public User(int id, String userName, String telNumber, String password, UserRole userRole) {
+    public User(Long id, String userName, String telNumber, String password, UserRole userRole) {
         this.id = id;
         this.userName = userName;
         this.telNumber = telNumber;
@@ -29,11 +28,11 @@ public class User {
         this.active = false;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

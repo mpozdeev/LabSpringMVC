@@ -2,11 +2,10 @@ package maksim.epam.mvcproject.controller;
 
 import maksim.epam.mvcproject.model.User;
 import maksim.epam.mvcproject.model.UserLogin;
+import maksim.epam.mvcproject.repo.UserRepositoryListImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,15 +15,31 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private UserRepositoryListImpl users;
+
     @GetMapping("/login")
     public ModelAndView main(HttpSession session) {
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext());
-        return new ModelAndView("login", "userLogin", new UserLogin());
+
+        ModelAndView modelAndView = new ModelAndView("login");
+        modelAndView.addObject("userLogin", new UserLogin());
+        modelAndView.addObject("userList", users.getUsers());
+        return modelAndView;
     }
 
-    @RequestMapping(value = "check-user", method = RequestMethod.POST)
-    public ModelAndView checkUser(@ModelAttribute("userLogin") UserLogin userLogin){
-
-        return new ModelAndView("index2", "userLogin", userLogin);
+    @PostMapping("/check-user")
+    public ModelAndView checkUser(@ModelAttribute("userLogin") UserLogin userLogin) {
+        if (userLogin != null) {
+            User foundUser = users.getUserByName(userLogin.getUserName());
+            if (foundUser != null) {
+                if (userLogin.getPassword().equals(foundUser.getPassword())) {
+                    return new ModelAndView("welcome", "userLogin", userLogin);
+                }
+            }
+        }
+        return new ModelAndView("wrong-login");
     }
+
+    
 }
