@@ -1,10 +1,5 @@
-<%@ page
-        language="java"
-        contentType="text/html; charset=UTF-8"
-        pageEncoding="UTF-8" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
@@ -15,12 +10,16 @@
     <title>Insert title here</title>
 </head>
 <body>
-ПРивет
+Список зарегистрированных пользователей:
 <table>
     <c:forEach items="${userList}" var="user">
         <tr>
+            <td>${user.id}</td>
             <td>${user.userName}</td>
+            <td>${user.telNumber}</td>
             <td>${user.password}</td>
+            <td>${user.userRole}</td>
+            <td>${user.active}</td>
         </tr>
     </c:forEach>
 </table>
@@ -39,7 +38,7 @@
     </fieldset>
 
     <footer>
-		<label><input type="checkbox" tabindex="3">Keep me logged in</label>
+<%--		<label><input type="checkbox" tabindex="3">Keep me logged in</label>--%>
         <input type="submit" class="btnLogin" value="Login" tabindex="4">
     </footer>
 </form:form>

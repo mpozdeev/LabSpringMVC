@@ -38,6 +38,7 @@ public class UserRepositoryListImpl implements UserRepository {
     @Override
     public void setUsers(List<User> usersList) {
         this.usersList = usersList;
+        sequence = usersList.size();
     }
 
     @Override
