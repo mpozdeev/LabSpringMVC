@@ -1,4 +1,4 @@
-package maksim.epam.mvcproject.model;
+package maksim.epam.mvcproject.model.dao;
 
 public class UserLogin {
 
