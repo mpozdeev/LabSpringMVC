@@ -63,4 +63,13 @@ public class UserRepositoryListImpl implements UserRepository {
         }
         return index;
     }
+
+    public boolean isNameExists(String name){
+        for (User user: usersList){
+            if (user.getUserName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -32,6 +32,9 @@ public class RegistrationController {
     @PostMapping("/register-user")
     public ModelAndView registerUser(@ModelAttribute("userRegistration") UserRegistration userRegistration) {
         if (userRegistration != null) {
+            if (users.isNameExists(userRegistration.getUserName())){
+                return new ModelAndView("wrong-name");
+            }
             System.out.println("New: " + userRegistration);
             UserRole role = (userRegistration.isUserRole()) ? UserRole.ADMIN : UserRole.USER;
             User newUser = new User(
