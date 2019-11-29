@@ -1,7 +1,7 @@
 package maksim.epam.mvcproject.controller;
 
 import maksim.epam.mvcproject.model.User;
-import maksim.epam.mvcproject.model.UserLogin;
+import maksim.epam.mvcproject.model.dao.UserLogin;
 import maksim.epam.mvcproject.repo.UserRepositoryListImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,5 +41,5 @@ public class LoginController {
         return new ModelAndView("wrong-login");
     }
 
-    
+
 }
