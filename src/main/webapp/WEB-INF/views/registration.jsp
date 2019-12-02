@@ -27,7 +27,6 @@
 
         <form:label path="userRole">Admin:</form:label>
         <form:checkbox path="userRole"/>
-
     </fieldset>
 
     <footer>

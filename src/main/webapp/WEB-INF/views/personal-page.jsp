@@ -11,8 +11,7 @@
 <h3>Личная информация:</h3>
 <form:form method="POST"
            modelAttribute="foundUser"
-           action="update-user"
-           class="box login">
+           action="update-user">
     <table>
         <tr>
             <td><form:label path="id">User ID:</form:label></td>
@@ -42,7 +41,7 @@
 
 <h3>Другие зарегистрированные пользователи</h3>
 <table>
-    <tr bgcolor="#9acd32">
+    <tr>
         <td>User ID</td>
         <td>Name</td>
         <td>Telephone</td>
@@ -64,8 +63,8 @@
 
 <h3>Список интересуемых книг:</h3>
 <table>
-    <tr bgcolor="#9acd32">
-        <td>User ID</td>
+    <tr>
+        <td>Book ID</td>
         <td>Title</td>
         <td>Author</td>
         <td>Release year</td>
@@ -73,7 +72,6 @@
         <td>Edit</td>
         <td>Delete</td>
     </tr>
-
     <c:forEach items="${booksList}" var="book">
         <tr>
             <td>${book.id}</td>
@@ -85,8 +83,9 @@
             <td><a href="" class="button button-red">Delete</a></td>
         </tr>
     </c:forEach>
-
 </table>
-<a href="add-new-book" class="button button-blue">Добавить книгу</a>
+
+<a href="<c:url value='/add-new-book/${user.id}' />"
+        class="button button-blue">Добавить книгу</a>
 </body>
 </html>

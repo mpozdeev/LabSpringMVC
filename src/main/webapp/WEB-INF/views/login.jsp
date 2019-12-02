@@ -30,10 +30,10 @@
            class="box login">
 
     <fieldset class="boxBody">
-        <form:label path="userName">Name:</form:label>
+        <form:label path="userName" placeholder="username">Name:</form:label>
         <form:input path="userName"/>
 
-        <form:label path="password">Password:</form:label>
+        <form:label path="password" placeholder="password">Password:</form:label>
         <form:password path="password"/>
     </fieldset>
 

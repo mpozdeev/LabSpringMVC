@@ -2,10 +2,13 @@ package maksim.epam.mvcproject.controller;
 
 import maksim.epam.mvcproject.model.User;
 import maksim.epam.mvcproject.model.dao.UserLogin;
+import maksim.epam.mvcproject.repo.UserBooksRepositoryMapImpl;
 import maksim.epam.mvcproject.repo.UserRepositoryListImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,10 +21,12 @@ public class LoginController {
     @Autowired
     private UserRepositoryListImpl users;
 
+    @Autowired
+    private UserBooksRepositoryMapImpl booksRepositoryMap;
+
     @GetMapping("/login")
     public ModelAndView main(HttpSession session) {
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext());
-
         return new ModelAndView("login")
                 .addObject("userLogin", new UserLogin())
                 .addObject("userList", users.getUsers());
@@ -35,25 +40,12 @@ public class LoginController {
                 if (userLogin.getPassword().equals(foundUser.getPassword())) {
                     return new ModelAndView("personal-page")
                             .addObject("foundUser", foundUser)
-                            .addObject("userList", users.getUsers());
+                            .addObject("userList", users.getUsers())
+                            .addObject("booksList", booksRepositoryMap.getBooksList(foundUser));
                 }
             }
         }
         return new ModelAndView("wrong-login");
     }
-
-    @PostMapping("/update-user")
-    public ModelAndView updateUser(@ModelAttribute("foundUser") User updUser){
-        if (updUser != null) {
-            long result = users.updateUser(updUser);
-            if(result != -1L){
-                return new ModelAndView("personal-page")
-                        .addObject("foundUser", updUser)
-                        .addObject("userList", users.getUsers());
-            }
-        }
-        return new ModelAndView("wrong-login");
-    }
-
 
 }
