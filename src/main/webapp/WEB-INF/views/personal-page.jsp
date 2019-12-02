@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%--    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">--%>
+    <link href="<c:url value="/resources/css/buttons.css" />" rel="stylesheet">
     <title>Personal page</title>
 </head>
 <body>
@@ -16,14 +16,14 @@
     <table>
         <tr>
             <td><form:label path="id">User ID:</form:label></td>
-            <td><form:input path="id"   value="${foundUser.id}" readonly="true"/></td>
+            <td><form:input path="id" value="${foundUser.id}" readonly="true"/></td>
         </tr>
         <tr>
             <td><form:label path="userName">Name:</form:label></td>
             <td><form:input path="userName" value="${foundUser.userName}"/></td>
         </tr>
         <tr>
-            <td><form:label path="telNumber">telNumber:</form:label></td>
+            <td><form:label path="telNumber">Tel.Number:</form:label></td>
             <td><form:input path="telNumber" value="${foundUser.telNumber}"/></td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
             <td><form:input path="userRole" value="${foundUser.userRole}" readonly="true"/></td>
         </tr>
         <tr>
-            <td><input type="submit" class="btnLogin" value="Update" tabindex="4"></td>
+            <td><input type="submit" class="button button-green" value="Update" tabindex="4"></td>
         </tr>
     </table>
 </form:form>
@@ -65,6 +65,7 @@
 <h3>Список интересуемых книг:</h3>
 <table>
     <tr bgcolor="#9acd32">
+        <td>User ID</td>
         <td>Title</td>
         <td>Author</td>
         <td>Release year</td>
@@ -73,8 +74,19 @@
         <td>Delete</td>
     </tr>
 
-</table>
-<a href="add-new-book">Добавить книгу</a>
+    <c:forEach items="${booksList}" var="book">
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.bookTitle}</td>
+            <td>${book.author}</td>
+            <td>${book.releaseYear}</td>
+            <td>${book.description}</td>
+            <td><a href="" class="button button-green">Edit</a></td>
+            <td><a href="" class="button button-red">Delete</a></td>
+        </tr>
+    </c:forEach>
 
+</table>
+<a href="add-new-book" class="button button-blue">Добавить книгу</a>
 </body>
 </html>
