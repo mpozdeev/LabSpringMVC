@@ -36,6 +36,16 @@ public class UserRepositoryListImpl implements UserRepository {
     }
 
     @Override
+    public User getUserById(Long userId) {
+        for (User user : usersList) {
+            if (user.getId() == userId) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void setUsers(List<User> usersList) {
         this.usersList = usersList;
         sequence = usersList.size();
@@ -47,9 +57,17 @@ public class UserRepositoryListImpl implements UserRepository {
     }
 
     @Override
-    public Long updateUser(User user) {
-        System.err.println("updateUser - не реализована");
-        return -1L;
+    public Long updateUser(User updateUser) {
+        Long result = -1L;
+        User oldUser = getUserById(updateUser.getId());
+        if (oldUser != null) {
+            oldUser.setUserName(updateUser.getUserName());
+            oldUser.setTelNumber(updateUser.getTelNumber());
+            oldUser.setPassword(updateUser.getPassword());
+            oldUser.setUserRole(updateUser.getUserRole());
+            result = oldUser.getId();
+        }
+        return result;
     }
 
     @Override
@@ -64,9 +82,9 @@ public class UserRepositoryListImpl implements UserRepository {
         return index;
     }
 
-    public boolean isNameExists(String name){
-        for (User user: usersList){
-            if (user.getUserName().equals(name)){
+    public boolean isNameExists(String name) {
+        for (User user : usersList) {
+            if (user.getUserName().equals(name)) {
                 return true;
             }
         }

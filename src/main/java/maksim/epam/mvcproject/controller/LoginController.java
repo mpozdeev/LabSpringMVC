@@ -22,10 +22,9 @@ public class LoginController {
     public ModelAndView main(HttpSession session) {
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext());
 
-        ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("userLogin", new UserLogin());
-        modelAndView.addObject("userList", users.getUsers());
-        return modelAndView;
+        return new ModelAndView("login")
+                .addObject("userLogin", new UserLogin())
+                .addObject("userList", users.getUsers());
     }
 
     @PostMapping("/check-user")
@@ -34,8 +33,23 @@ public class LoginController {
             User foundUser = users.getUserByName(userLogin.getUserName());
             if (foundUser != null) {
                 if (userLogin.getPassword().equals(foundUser.getPassword())) {
-                    return new ModelAndView("welcome", "userLogin", userLogin);
+                    return new ModelAndView("personal-page")
+                            .addObject("foundUser", foundUser)
+                            .addObject("userList", users.getUsers());
                 }
+            }
+        }
+        return new ModelAndView("wrong-login");
+    }
+
+    @PostMapping("/update-user")
+    public ModelAndView updateUser(@ModelAttribute("foundUser") User updUser){
+        if (updUser != null) {
+            long result = users.updateUser(updUser);
+            if(result != -1L){
+                return new ModelAndView("personal-page")
+                        .addObject("foundUser", updUser)
+                        .addObject("userList", users.getUsers());
             }
         }
         return new ModelAndView("wrong-login");

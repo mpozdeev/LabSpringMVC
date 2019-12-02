@@ -10,6 +10,8 @@ public interface UserRepository {
 
     User getUserByName(String userName);
 
+    User getUserById(Long userId);
+
     void setUsers(List<User> usersList);
 
     List<User> getUsers();
