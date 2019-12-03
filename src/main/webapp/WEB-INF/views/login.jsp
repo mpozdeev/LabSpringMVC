@@ -5,13 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
+<%--    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">--%>
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
-Список зарегистрированных пользователей:
+<a href="index" class="button button-green">Вернуться на главную</a>
+<h3>Список зарегистрированных пользователей:</h3>
 <table>
+    <tr bgcolor="#9acd32" >
+        <td>User ID</td>
+        <td>Name</td>
+        <td>Telephone</td>
+        <td>Password</td>
+        <td>User role</td>
+        <td>Active</td>
+    </tr>
     <c:forEach items="${userList}" var="user">
         <tr>
             <td>${user.id}</td>
@@ -39,7 +49,7 @@
 
     <footer>
 		<label><input type="checkbox" tabindex="3">Remember Me</label>
-        <input type="submit" class="btnLogin" value="Login" tabindex="4">
+        <input type="submit" class="button button-blue" value="Login" tabindex="4">
     </footer>
 </form:form>
 </body>

@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="<c:url value="/resources/css/buttons.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <title>Personal page</title>
 </head>
 <body>
+<a href="index" class="button button-green">Вернуться на главную</a>
 <h3>Личная информация:</h3>
 <form:form method="POST"
            modelAttribute="foundUser"
@@ -41,7 +42,7 @@
 
 <h3>Другие зарегистрированные пользователи</h3>
 <table>
-    <tr>
+    <tr bgcolor="#9acd32">
         <td>User ID</td>
         <td>Name</td>
         <td>Telephone</td>
@@ -63,7 +64,7 @@
 
 <h3>Список интересуемых книг:</h3>
 <table>
-    <tr>
+    <tr bgcolor="#9acd32">
         <td>Book ID</td>
         <td>Title</td>
         <td>Author</td>

@@ -6,10 +6,12 @@
 <html>
 <head>
 <%--    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">--%>
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
+<p><a href="index" class="button button-green">Вернуться на главную</a></p>
 <form:form method="POST"
            modelAttribute="userRegistration"
            action="register-user"
@@ -30,8 +32,8 @@
     </fieldset>
 
     <footer>
-        <label><input type="checkbox" tabindex="3">Admin</label>
-        <input type="submit" class="btnLogin" value="Register" tabindex="4">
+<%--        <label><input type="checkbox" tabindex="3">Admin</label>--%>
+        <input type="submit" class="button button-blue" value="Register" tabindex="4">
     </footer>
 </form:form>
 </body>

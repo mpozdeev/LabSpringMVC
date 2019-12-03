@@ -3,11 +3,12 @@
 
 <html>
 <head>
-    <meta charset='utf-8'>
-    <title>Insert title here</title>
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+    <title>Welcome new user</title>
 </head>
 <body>
-<h1>Welcome new user</h1>
+<a href="index" class="button button-green">Вернуться на главную</a>
+<h3>Welcome new user</h3>
 <p>Name: ${userRegistration.userName}</p>
 <p>Tel: ${userRegistration.telNumber}</p>
 <p>Passw: ${userRegistration.password}</p>

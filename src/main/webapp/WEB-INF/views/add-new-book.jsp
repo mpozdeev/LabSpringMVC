@@ -5,7 +5,7 @@
 <html>
 <head>
     <%--    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">--%>
-    <link href="<c:url value="/resources/css/buttons.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <title>Add new book</title>
 </head>
 <body>
