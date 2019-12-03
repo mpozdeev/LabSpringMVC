@@ -9,8 +9,10 @@
     <title>Add new book</title>
 </head>
 <body>
+<a href="<c:url value='/personal-page/${user.id}' />"
+   class="button button-green">Вернуться в кабинет</a>
 <table>
-    <tr>
+    <tr bgcolor="#9acd32">
         <td>User ID</td>
         <td>Name</td>
         <td>Telephone</td>
@@ -18,26 +20,22 @@
         <td>User role</td>
         <td>Active</td>
     </tr>
-<%--    <c:forEach items="${userList}" var="user">--%>
-        <tr>
-            <td>${user.id}</td>
-            <td>${user.userName}</td>
-            <td>${user.telNumber}</td>
-            <td>${user.password}</td>
-            <td>${user.userRole}</td>
-            <td>${user.active}</td>
-        </tr>
-<%--    </c:forEach>--%>
+    <tr>
+        <td>${user.id}</td>
+        <td>${user.userName}</td>
+        <td>${user.telNumber}</td>
+        <td>${user.password}</td>
+        <td>${user.userRole}</td>
+        <td>${user.active}</td>
+    </tr>
 </table>
-
 
 <form:form method="POST"
            modelAttribute="bookCreator"
            action="create-book">
     <table>
         <tr>
-<%--            <td><form:label path="userId">userId:</form:label></td>--%>
-            <td><form:input type="hidden" path="userId" value="${user.id}" readonly="true"/></td>
+            <td><form:input type="hidden" path="userId" value="${user.id}" /></td>
         </tr>
         <tr>
             <td><form:label path="bookTitle">Title:</form:label></td>

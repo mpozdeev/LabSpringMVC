@@ -8,7 +8,7 @@
     <title>Personal page</title>
 </head>
 <body>
-<a href="index" class="button button-green">Вернуться на главную</a>
+<a href="personal-page" class="button button-green">Вернуться на главную</a>
 <h3>Личная информация:</h3>
 <form:form method="POST"
            modelAttribute="foundUser"
@@ -86,7 +86,7 @@
     </c:forEach>
 </table>
 
-<a href="<c:url value='/add-new-book/${user.id}' />"
+<a href="<c:url value='/add-new-book/${foundUser.id}' />"
         class="button button-blue">Добавить книгу</a>
 </body>
 </html>
