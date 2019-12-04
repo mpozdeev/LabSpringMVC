@@ -6,6 +6,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+<a href="index" class="button button-green">Вернуться на главную</a>
 <h1>Welcome to my page</h1>
 
 <a href="<c:url value='/logout'/>">Logout</a>
