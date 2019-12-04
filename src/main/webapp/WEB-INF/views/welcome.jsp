@@ -7,7 +7,10 @@
 </head>
 <body>
 <h1>Welcome to my page</h1>
-<p>Hello ${userLogin.userName}!</p>
-<p>You password: ${userLogin.password}!</p>
+
+<a href="<c:url value='/logout'/>">Logout</a>
+
+<%--<p>Hello ${userLogin.userName}!</p>--%>
+<%--<p>You password: ${userLogin.password}!</p>--%>
 </body>
 </html>

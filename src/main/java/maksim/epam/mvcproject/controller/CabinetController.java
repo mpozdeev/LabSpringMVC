@@ -22,26 +22,32 @@ public class CabinetController {
     @Autowired
     private UserBooksRepositoryMapImpl booksRepositoryMap;
 
-    @PostMapping("/update-user")
-    public ModelAndView updateUser(@ModelAttribute("foundUser") User updUser) {
-        if (updUser != null) {
-            long result = users.updateUser(updUser);
-            if (result != -1L) {
-                return new ModelAndView("personal-page")
-                        .addObject("foundUser", updUser)
-                        .addObject("userList", users.getUsers())
-                        .addObject("booksList", booksRepositoryMap.getBooksList(updUser));
-            }
-        }
-        return new ModelAndView("wrong-login");
+    @GetMapping("/logout")
+    public String logOut() {
+        return "redirect:/index";
     }
 
-    @RequestMapping(value = "/add-new-book/{id}", method = RequestMethod.GET)
-    public ModelAndView addBook(@PathVariable("id") String id) {
-        User user = users.getUserById(Long.parseLong(id));
-        return new ModelAndView("add-new-book")
-                .addObject("user", user)
-                .addObject("bookCreator", new BookCreator());
-    }
+//    @PostMapping("/update-user")
+//    public ModelAndView updateUser(@ModelAttribute("foundUser") User updUser) {
+//        if (updUser != null) {
+//            long result = users.updateUser(updUser);
+//            if (result != -1L) {
+//                return new ModelAndView("personal-page")
+//                        .addObject("foundUser", updUser)
+//                        .addObject("userList", users.getUsers())
+//                        .addObject("booksList", booksRepositoryMap.getBooksList(updUser));
+//            }
+//        }
+//        return new ModelAndView("wrong-login");
+//    }
+
+//    @RequestMapping(value = "/add-new-book/{id}", method = RequestMethod.GET)
+//    public ModelAndView addBook(@PathVariable("id") String id) {
+//        User user = users.getUserById(Long.parseLong(id));
+//        return new ModelAndView("add-new-book")
+//                .addObject("user", user)
+//                .addObject("bookCreator", new BookCreator());
+//    }
+
 
 }

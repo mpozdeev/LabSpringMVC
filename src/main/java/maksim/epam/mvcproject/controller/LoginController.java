@@ -25,27 +25,26 @@ public class LoginController {
     private UserBooksRepositoryMapImpl booksRepositoryMap;
 
     @GetMapping("/login")
-    public ModelAndView main(HttpSession session) {
+    public String main(HttpSession session) {
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext());
-        return new ModelAndView("login")
-                .addObject("userLogin", new UserLogin())
-                .addObject("userList", users.getUsers());
+        return "login";
     }
 
-    @PostMapping("/check-user")
-    public ModelAndView checkUser(@ModelAttribute("userLogin") UserLogin userLogin) {
-        if (userLogin != null) {
-            User foundUser = users.getUserByName(userLogin.getUserName());
-            if (foundUser != null) {
-                if (userLogin.getPassword().equals(foundUser.getPassword())) {
-                    return new ModelAndView("personal-page")
-                            .addObject("foundUser", foundUser)
-                            .addObject("userList", users.getUsers())
-                            .addObject("booksList", booksRepositoryMap.getBooksList(foundUser));
-                }
-            }
-        }
-        return new ModelAndView("wrong-login");
-    }
+
+//    @PostMapping("/check-user")
+//    public ModelAndView checkUser(@ModelAttribute("userLogin") UserLogin userLogin) {
+//        if (userLogin != null) {
+//            User foundUser = users.getUserByName(userLogin.getUserName());
+//            if (foundUser != null) {
+//                if (userLogin.getPassword().equals(foundUser.getPassword())) {
+//                    return new ModelAndView("personal-page")
+//                            .addObject("foundUser", foundUser)
+//                            .addObject("userList", users.getUsers())
+//                            .addObject("booksList", booksRepositoryMap.getBooksList(foundUser));
+//                }
+//            }
+//        }
+//        return new ModelAndView("wrong-login");
+//    }
 
 }

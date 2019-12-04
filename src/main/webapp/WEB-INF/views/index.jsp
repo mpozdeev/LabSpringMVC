@@ -7,7 +7,7 @@
     <title>Greeting page!</title>
 </head>
 <body>
-<h2>Greeting page!</h2>
+<h2>Greeting page!!!</h2>
 <a href="login" class="button button-green">Login page</a>
 <a href="registration" class="button button-green">Registration</a>
 <a href="allusers" class="button button-green">Users</a>

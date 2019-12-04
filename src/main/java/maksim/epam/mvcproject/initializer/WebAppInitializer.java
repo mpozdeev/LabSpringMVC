@@ -2,6 +2,7 @@ package maksim.epam.mvcproject.initializer;
 
 import maksim.epam.mvcproject.config.RootConfig;
 import maksim.epam.mvcproject.config.WebConfig;
+import maksim.epam.mvcproject.config.WebSecurityConfig;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -19,6 +20,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 //        return new Class[]{
 //                RootConfig.class
         return new Class[0];
+//        return new Class[] {WebSecurityConfig.class};
     }
 
     @Override

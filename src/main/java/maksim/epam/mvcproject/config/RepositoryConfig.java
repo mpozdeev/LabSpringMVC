@@ -6,9 +6,11 @@ import maksim.epam.mvcproject.model.User;
 import maksim.epam.mvcproject.repo.UserBooksRepositoryMapImpl;
 import maksim.epam.mvcproject.repo.UserRepositoryListImpl;
 import maksim.epam.mvcproject.temporary.Generator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
